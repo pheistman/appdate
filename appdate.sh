@@ -2,8 +2,7 @@
 
 #This script updates the local system and displays the progress of each step on the screen
 
-#This function checks for available updates from the repo and appends updates to a file
-
+#This function checks for available updates from the repo 
 update() {
     echo $'\n'$"Peforming full system update..."
     echo "................................"
@@ -11,7 +10,6 @@ update() {
 }
 
 #This function lists the upgradable packages and appends this list to a file, then performs upgrade
-
 listupdate() {
     now=$(date)
     echo $'\n'$"Listing available updates..."
