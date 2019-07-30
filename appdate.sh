@@ -46,7 +46,8 @@ cleanup() {
 #Execute functions if there are new packages available for update else exit
 	update #run update function and perform upgrade only if new packages available else exit
     if [[ $anyupdate == "1" ]]; then 
-       echo "No new updates available, exiting..."
+       echo "No new updates available, exiting...
+"
     else
 	checklog
 	listupdate
