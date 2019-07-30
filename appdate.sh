@@ -9,13 +9,22 @@ update() {
     sudo apt update
 }
 
+#This function checks if appdate.log file exists and creates one if absent else it will create a new file
+checklog() {
+    if [ ! -f /home/$USER/appdate.log]; then
+        echo "+++Packages available for update+++"
+        echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" \
+	> /home/$USER/appdate.log
+    fi
+}
+
 #This function lists the upgradable packages and appends this list to a file, then performs upgrade
 listupdate() {
     now=$(date)
     echo $'\n'$"Listing available updates..."
     echo "..............................."
-    echo $'\n'$"+++Listing available updates on $now+++" | tee -a ~/bin/newpackages.txt
-    sudo apt list --upgradable | tee -a ~/bin/newpackages.txt
+    echo $'\n'$"+++Listing available updates on $now+++" | tee -a ~/appdate.log
+    sudo apt list --upgradable | tee -a ~/appdate.log
     sudo apt -f upgrade
 }
 
@@ -23,7 +32,7 @@ listupdate() {
 cleanup() {
     echo $'\n'$"Cleaning up..."
     echo "................."
-    sudo apt autoclean && apt autoremove
+    sudo apt autoclean #; apt autoremove
     echo ".........................."
     echo $'\n'$"+++ UPDATE COMPLETE +++"
     echo ".........................."
@@ -31,6 +40,7 @@ cleanup() {
 
 #Execute functions
 update
+checklog
 listupdate
 cleanup
 
