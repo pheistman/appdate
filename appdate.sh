@@ -11,10 +11,10 @@ update() {
 
 #This function checks if appdate.log file exists and creates one if absent else it will create a new file
 checklog() {
-    if [ ! -f /home/$USER/appdate.log]; then
-        echo "+++Packages available for update+++"
-        echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" \
-	> /home/$USER/appdate.log
+    if [ ! -f ~/appdate.log ]; then
+	echo $'\n'$"+++ Packages available for update +++ 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" \
+	> ~/appdate.log
     fi
 }
 
@@ -23,7 +23,7 @@ listupdate() {
     now=$(date)
     echo $'\n'$"Listing available updates..."
     echo "..............................."
-    echo $'\n'$"+++Listing available updates on $now+++" | tee -a ~/appdate.log
+    echo $'\n'$"+++Latest updates available on $now+++" | tee -a ~/appdate.log
     sudo apt list --upgradable | tee -a ~/appdate.log
     sudo apt -f upgrade
 }
