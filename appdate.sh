@@ -6,7 +6,7 @@
 anyupdate="" #initializing variable that stores the result of repo check
 update() {
     echo $'\n'$"Peforming full system upgrade..."
-    echo "................................"
+    echo "++++++++++++++++++++++++++++++++"
 #Perform update and if there are no new packages, set anyupdate variable to 1
     sudo apt update | grep "All packages are up-to-date." &> /dev/null
 	if [ $? == 0 ]; then 
@@ -27,7 +27,7 @@ checklog() {
 listupdate() {
     now=$(date)
     echo $'\n'$"Listing available updates..."
-    echo "..............................."
+    echo "+++++++++++++++++++++++++++++++"
     echo $'\n'$"+++Latest updates available on $now+++" | tee -a ~/appdate.log
     sudo apt list --upgradable | tee -a ~/appdate.log
     sudo apt -f upgrade
@@ -36,7 +36,7 @@ listupdate() {
 #This function cleans up after upgrading the packages and exits the script
 cleanup() {
     echo $'\n'$"Cleaning up..."
-    echo "................."
+    echo "+++++++++++++++++"
     sudo apt autoclean && sudo apt autoremove
     echo ".........................."
     echo $'\n'$"+++ UPDATE COMPLETE +++"
