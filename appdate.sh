@@ -37,7 +37,7 @@ listupdate() {
 cleanup() {
     echo $'\n'$"Cleaning up..."
     echo "+++++++++++++++++"
-    sudo apt autoclean && sudo apt autoremove
+    sudo apt autoclean autoremove
     echo ".........................."
     echo $'\n'$"+++ UPDATE COMPLETE +++"
     echo ".........................."
