@@ -8,7 +8,7 @@ update() {
     echo $'\n'$"Peforming full system upgrade..."
     echo "++++++++++++++++++++++++++++++++"
 #Perform update and if there are no new packages, set anyupdate variable to 1
-    sudo apt update | grep "All packages are up-to-date." &> /dev/null
+    sudo apt update | grep "All packages are up to date." &> /dev/null
 	if [ $? == 0 ]; then 
 	   anyupdate=1 
 	fi
