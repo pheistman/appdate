@@ -1,5 +1,5 @@
 #!/bin/bash 
-
+#set -x
 #This script updates the local system and displays the progress of each step on the screen
 
 #This function checks for available updates from the repo 
@@ -8,7 +8,7 @@ update() {
     echo $'\n'$"Peforming full system upgrade..."
     echo "++++++++++++++++++++++++++++++++"
 #Perform update and if there are no new packages, set anyupdate variable to 1
-    sudo apt update | grep "All packages are up to date." &> /dev/null
+    sudo apt update | grep "All packages are up-to-date." &> /dev/null
 	if [ $? == 0 ]; then 
 	   anyupdate=1 
 	fi
@@ -30,6 +30,9 @@ listupdate() {
     echo "+++++++++++++++++++++++++++++++"
     echo $'\n'$"+++Latest updates available on $now+++" | tee -a ~/appdate.log
     sudo apt list --upgradable | tee -a ~/appdate.log
+    pip3 list -o | grep "awscli*\|botocore*\|s3transfer*" | tee -a ~/appdate.log
+    pip3 install --upgrade --user awscli
+    /usr/bin/python3 -m pip install --upgrade pip
     sudo apt -f upgrade
 }
 
