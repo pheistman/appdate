@@ -30,7 +30,7 @@ listupdate() {
     echo "+++++++++++++++++++++++++++++++"
     echo $'\n'$"+++Latest updates available on $now+++" | tee -a ~/appdate.log
     sudo apt list --upgradable | tee -a ~/appdate.log
-    pip3 list -o | grep "awscli*\|botocore*\|s3transfer*" | tee -a ~/appdate.log
+    pip3 list -o | grep "botocore*\|s3transfer*" | tee -a ~/appdate.log
     pip3 install --upgrade --user awscli
     /usr/bin/python3 -m pip install --upgrade pip
     sudo apt -f upgrade
